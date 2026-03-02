@@ -47,7 +47,7 @@ class TenantController extends Controller
             $companyAdminRole = Role::where('name', 'company_admin')                                
                                     ->first();
             //dd($companyAdminRole);
-            // 4. Assign the role to the user within the new tenant's context
+            // 2. Assign to user and link to tenant (Saves to model_has_roles)
             $user->assignRole($companyAdminRole, $tenant->id);
         });
 

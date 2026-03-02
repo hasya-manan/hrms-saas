@@ -56,7 +56,10 @@ class DatabaseSeeder extends Seeder
             'tenant_id' => $tenant->id,
         ]);
 
+         // set team/tenant context
+        app(PermissionRegistrar::class)->setPermissionsTeamId($tenant->id);
         // 7. Assign the Role
-        $superAdminUser->assignRole($superAdminRole);
+       
+        $superAdminUser->assignRole($superAdminRole, $tenant->id);
     }
 }
