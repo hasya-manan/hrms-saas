@@ -43,9 +43,8 @@ class TenantController extends Controller
                 'tenant_id' => $tenant->id,
             ]);
 
-            // 3. Find the roles (Look for team_id is NULL)
-            $companyAdminRole = Role::where('name', 'company_admin')
-                                    ->whereNull('team_id')
+            
+            $companyAdminRole = Role::where('name', 'company_admin')                                
                                     ->first();
             //dd($companyAdminRole);
             // 4. Assign the role to the user within the new tenant's context
